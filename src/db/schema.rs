@@ -6,7 +6,7 @@ diesel::table! {
         #[max_length = 255]
         name -> Varchar,
         #[max_length = 255]
-        email -> Nullable<Varchar>,
+        email -> Varchar,
         created_at -> Timestamp,
     }
 }
