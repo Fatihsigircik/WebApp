@@ -1,12 +1,14 @@
-use actix_web::{web, App, HttpServer, Responder};
-
-async fn hello() -> impl Responder {
-    "Hello, world!"
-}
+use actix_web::{App, HttpServer};
+mod routing;
+mod controller;
+mod model;
+mod db;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().route("/", web::get().to(hello)))
+    HttpServer::new(|| 
+    App::new().configure(routing::init_routes)
+    )
         .bind("127.0.0.1:8080")?
         .run()
         .await
