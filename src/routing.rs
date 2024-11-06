@@ -1,13 +1,9 @@
 use actix_web::web;
-use crate::controller::hello::{index, hello_name};
+use crate::cfg::user_cfg;
 
 pub fn init_routes(cfg: &mut web::ServiceConfig) {
     cfg.service(
         web::resource("/")
-            .route(web::get().to(index))
-    );
-    cfg.service(
-        web::resource("/hello/{name}")
-            .route(web::get().to(hello_name))
-    );
+            .route(web::get().to(|| async { "{\"developer\" : \"Fatih SIĞIRCIK\", \"year\" : \"2024\"} " })));
+    user_cfg::set_user_cfg(cfg); // adding endpoints for user
 }

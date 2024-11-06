@@ -3,6 +3,9 @@ mod routing;
 mod controller;
 mod model;
 mod db;
+mod services;
+mod cfg;
+mod helper;
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
